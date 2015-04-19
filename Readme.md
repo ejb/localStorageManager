@@ -12,9 +12,13 @@ Works the same way as normal localStorage. Set a key (unique name) and value. Bo
 
 ### getItem
 
-Works the same way as normal localStorage. Get an item's value by its key
+Works the same way as normal localStorage. Get an item's value by its key.
 
     var item = localStorageManager.getItem('Item Key');
+    
+### getItemMetadata
+
+Returns an object with the item's `key`, `value`, `index` and `timestamp`.
 
 ### removeItem
 
@@ -24,7 +28,7 @@ Works the same way as normal localStorage. Remove an item by its key
 
 ### getAll
 
-Retrieves all items stored by localStorageManager as an array.
+Retrieves all items stored by localStorageManager as an object.
 
     localStorageManager.getAll();
 
@@ -46,6 +50,16 @@ Setting `all` to true will return everything in localStorage, not just items sto
     localStorageManager.getAll({
         "all": true
     });
+    
+### getArray
+
+Retrieves all items stored by localStorageManager as an array. Shortcut for `getAll` with 'array' set to true.
+
+
+### getFirst
+
+Retrieves object form of earliest item recorded.
+
 
 ### prune
 
@@ -54,4 +68,16 @@ COMING SOON
 
 ## Settings
 
-identifier;
+### onFull
+
+Function run when localStorage is full, but *before* cleanup. Only fires once every 1000 miliseconds.
+
+    localStorageManager.onFull = function(){
+        alert("localStorage is full!");
+    }
+
+
+### identifier
+
+String to identify all localStorage items set by localStorageManager. Changing it to something else is not recommended.
+
