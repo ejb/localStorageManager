@@ -1,6 +1,7 @@
 var localStorageManager = {
     identifier: 'localStorageManager',
     setItem: function(key,value){
+        var that = this;
         var now = new Date().getTime();
         var valueWithMetadata = {
             value: value,
@@ -27,8 +28,9 @@ var localStorageManager = {
                 this.onFull();
                 this._lastRanOnFull = now;
             }
-            this.prune();
-            // this.setItem(this.identifier+'_'+key,value);
+            this.clearOldest( function(){
+                that.setItem(key, value);
+            } );
         }
     },
     getItem: function(key, prefix){
@@ -104,9 +106,27 @@ var localStorageManager = {
         var arr = this.getArray();
         return arr[0];
     },
-    prune: function(){
-        // get all, delete oldest
-        this.full = true;
+    clearOldest: function(callback){
+        if (this.full !== true) {
+            return;
+        }
+        var array = this.getArray();
+        for (var i = 0; i < 3; i++) {
+            localStorageManager.removeItem( array[0].key );
+        }
+        var testKey = this.identifier+'__test_'+new Date().getTime();
+        try {
+            localStorage.setItem(testKey,'A');
+            // assumes test passes...
+            this.full = false;
+            if (callback) { callback(); }
+        } catch (err) {
+            this.clearOldest();
+        }
+        localStorage.removeItem(testKey);
     }
     
 }
+
+
+

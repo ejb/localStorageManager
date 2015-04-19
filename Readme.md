@@ -61,9 +61,9 @@ Retrieves all items stored by localStorageManager as an array. Shortcut for `get
 Retrieves object form of earliest item recorded.
 
 
-### prune
+### clearOldest
 
-COMING SOON
+Clears the oldest five (tracked) items from localStorage.
 
 
 ## Settings
@@ -75,7 +75,6 @@ Function run when localStorage is full, but *before* cleanup. Only fires once ev
     localStorageManager.onFull = function(){
         alert("localStorage is full!");
     }
-
 
 ### identifier
 
