@@ -1,3 +1,6 @@
+(function(){
+'use strict';
+
 var localStorageManager = {
     identifier: 'localStorageManager',
     setItem: function(key,value){
@@ -128,5 +131,6 @@ var localStorageManager = {
     
 }
 
+window.localStorageManager = localStorageManager;
 
-
+}());
