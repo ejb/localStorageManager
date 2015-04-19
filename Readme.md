@@ -80,3 +80,12 @@ Function run when localStorage is full, but *before* cleanup. Only fires once ev
 
 String to identify all localStorage items set by localStorageManager. Changing it to something else is not recommended.
 
+## Testing
+
+Download and open `test/test.htm` in your browser to run QUnit tests. No automated testing set up (yet).
+
+## Version history
+
+**v0.1.0**
+
+- First versioned release.
