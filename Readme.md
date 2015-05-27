@@ -94,6 +94,12 @@ Download and open `test/test.htm` in your browser to run QUnit tests. No automat
 
 ## Version history
 
+**v0.2.1**
+
+May 27, 2015
+
+- Fix getItemMetadata bug
+
 **v0.2.0**
 
 May 27, 2015

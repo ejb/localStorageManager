@@ -1,4 +1,4 @@
-/* localStorageManager v0.2.0 */
+/* localStorageManager v0.2.1 */
 ;(function(){
 'use strict';
 
@@ -49,9 +49,9 @@ var localStorageManager = {
     getItemMetadata: function(key, prefix){
         if (prefix === undefined) {
             prefix = this.identifier+'_';
-        } else 
+        }
         var raw = localStorage.getItem(prefix+key);
-        if (!raw) {
+        if ((raw === null) || (raw === undefined)) {
             return null;
         }
         var parsed = JSON.parse(raw);

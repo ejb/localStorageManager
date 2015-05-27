@@ -24,6 +24,18 @@ QUnit.test( "removes", function( assert ) {
 });
 
 
+QUnit.test( "gets metadata", function( assert ) {
+    var time = new Date().getTime();
+    localStorageManager.setItem('A','B');
+    assert.equal( localStorageManager.getItem('A'), 'B' );
+    var item = localStorageManager.getItemMetadata('A');
+    assert.equal( item.value, 'B' );
+    assert.equal( item.key, 'A' );
+    assert.equal( item.timestamp, time );
+    localStorageManager.removeItem('A');
+});
+
+
 QUnit.test( "gets LSM-set items", function( assert ) {
     localStorageManager.setItem('A','B');
     localStorageManager.setItem('j','k');
@@ -143,7 +155,6 @@ QUnit.test( "clearOldest() cleanup", function( assert ) {
         localStorageManager.setItem('B'+i,n100kb);
     }
     var arr = localStorageManager.getArray();
-    console.log(arr.length,arr)
     assert.equal( arr[arr.length-1].key, 'B99', 'saves latest' );
     for (var i = 0; i < 100; i++) {
         localStorageManager.removeItem('B'+i);
