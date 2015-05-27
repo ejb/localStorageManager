@@ -76,6 +76,14 @@ Function run when localStorage is full, but *before* cleanup. Only fires once ev
         alert("localStorage is full!");
     }
 
+### onSaveFailure
+
+Function run when localStorageManager is not able to save after 10 attempts.
+
+    localStorageManager.onSaveFailure = function(){
+        alert("Unable to save anything. Sorry.");
+    }
+
 ### identifier
 
 String to identify all localStorage items set by localStorageManager. Changing it to something else is not recommended.
@@ -85,6 +93,14 @@ String to identify all localStorage items set by localStorageManager. Changing i
 Download and open `test/test.htm` in your browser to run QUnit tests. No automated testing set up (yet).
 
 ## Version history
+
+**v0.2.0**
+
+May 27, 2015
+
+- Added onSaveFailure option
+- Improve tests
+- Bugfixes
 
 **v0.1.0**
 

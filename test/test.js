@@ -87,7 +87,7 @@ var n100b = repeat(n10b, 10)
 var n1kb = repeat(n100b, 10)
 var n10kb = repeat(n1kb, 10)
 var n100kb = repeat(n10kb, 10)
-var n999kb = repeat(n1kb, 999)
+var n10kb = repeat(n1kb, 999)
 var n2500kb = repeat(n100kb, 25)
 
 QUnit.test( "runs onFull", function( assert ) {
@@ -97,26 +97,26 @@ QUnit.test( "runs onFull", function( assert ) {
         assert.ok(true);
         done();
     };
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 100; i++) {
         localStorageManager.setItem('B'+i,n100kb);
     }
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 100; i++) {
         localStorageManager.removeItem('B'+i);
     }
 });
 
 QUnit.test( "always saves, even when full", function( assert ) {
     var saved = 0;
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 100; i++) {
         localStorageManager.setItem('B'+i,n10kb);
         if ( localStorageManager.getItem('B'+i) === n10kb) {
             saved++;
         }
     }
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 100; i++) {
         localStorageManager.removeItem('B'+i);
     }
-    assert.equal( saved, 1000 );
+    assert.equal( saved, 100 );
 });
 
 
@@ -139,13 +139,13 @@ QUnit.test( "getFirst gets first", function( assert ) {
 
 
 QUnit.test( "clearOldest() cleanup", function( assert ) {
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 100; i++) {
         localStorageManager.setItem('B'+i,n100kb);
     }
     var arr = localStorageManager.getArray();
     console.log(arr.length,arr)
-    assert.equal( arr[arr.length-1].key, 'B999', 'saves latest' );
-    for (var i = 0; i < 1000; i++) {
+    assert.equal( arr[arr.length-1].key, 'B99', 'saves latest' );
+    for (var i = 0; i < 100; i++) {
         localStorageManager.removeItem('B'+i);
     }
     assert.notOk( localStorageManager.full, '`.full` is not true');

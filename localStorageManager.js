@@ -1,4 +1,5 @@
-(function(){
+/* localStorageManager v0.2.0 */
+;(function(){
 'use strict';
 
 var localStorageManager = {
@@ -115,20 +116,28 @@ var localStorageManager = {
         }
         var array = this.getArray();
         for (var i = 0; i < 3; i++) {
-            localStorageManager.removeItem( array[0].key );
+            if (array[i]) {
+                localStorageManager.removeItem( array[i].key );
+            }
         }
         var testKey = this.identifier+'__test_'+new Date().getTime();
         try {
             localStorage.setItem(testKey,'A');
             // assumes test passes...
             this.full = false;
+            this.saveAttempts = 0;
             if (callback) { callback(); }
         } catch (err) {
-            this.clearOldest();
+            this.saveAttempts += 1;
+            if (this.saveAttempts < 10) {
+                this.clearOldest(callback);
+            } else if (this.onSaveFailure) {
+                this.onSaveFailure();
+            }
         }
         localStorage.removeItem(testKey);
-    }
-    
+    },
+    saveAttempts: 0
 }
 
 window.localStorageManager = localStorageManager;
