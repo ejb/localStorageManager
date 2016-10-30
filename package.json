@@ -1,0 +1,30 @@
+{
+  "dependencies": {},
+  "description": "A light wrapper to safeguard the browser's native localStorage from overflowing.",
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-cli": "~0.1.6",
+    "grunt-contrib-connect": "~0.1.2",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-saucelabs": "~8.6.0"
+  },
+  "name": "local-storage-manager",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ejb/localStorageManager.git"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "version": "0.3.0",
+  "bugs": {
+    "url": "https://github.com/ejb/localStorageManager/issues"
+  },
+  "homepage": "https://github.com/ejb/localStorageManager#readme",
+  "main": "localStorageManager.js",
+  "directories": {
+    "test": "test"
+  },
+  "author": "ejb",
+  "license": "ISC"
+}
