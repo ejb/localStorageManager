@@ -94,6 +94,12 @@ Download and open `test/test.htm` in your browser to run QUnit tests. No automat
 
 ## Version history
 
+**v0.3.0**
+
+October 30, 2016
+
+- UMD support
+
 **v0.2.1**
 
 May 27, 2015

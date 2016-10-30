@@ -1,5 +1,9 @@
-/* localStorageManager v0.2.1 */
-;(function(){
+/* localStorageManager v0.3.0 */
+(function(name, definition) {
+    if (typeof module != 'undefined') module.exports = definition();
+    else if (typeof define == 'function' && typeof define.amd == 'object') define(definition);
+    else this[name] = definition();
+}('localStorageManager', function() {
 'use strict';
 
 var localStorageManager = {
@@ -140,6 +144,6 @@ var localStorageManager = {
     saveAttempts: 0
 }
 
-window.localStorageManager = localStorageManager;
+return localStorageManager;
 
-}());
+}));
