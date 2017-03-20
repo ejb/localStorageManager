@@ -161,3 +161,11 @@ QUnit.test( "clearOldest() cleanup", function( assert ) {
     }
     assert.notOk( localStorageManager.full, '`.full` is not true');
 });
+
+QUnit.test( "malformed items", function( assert ) {
+    localStorage.setItem('localStorageManager_A','asd;woih;oiq34');
+    assert.throws(function() {
+        localStorageManager.getItem('A');
+    }, /Item in localStorage with key 'localStorageManager_A' is not valid JSON/);
+    localStorage.removeItem('A');
+});

@@ -58,7 +58,11 @@ var localStorageManager = {
         if ((raw === null) || (raw === undefined)) {
             return null;
         }
-        var parsed = JSON.parse(raw);
+        try {
+            var parsed = JSON.parse(raw);
+        } catch (e) {
+            throw("Item in localStorage with key '"+prefix+key+"' is not valid JSON");
+        }
         parsed.key = key;
         if (parsed && parsed.value) {
             return parsed;

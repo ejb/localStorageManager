@@ -94,6 +94,12 @@ Download and open `test/test.htm` in your browser to run QUnit tests. No automat
 
 ## Version history
 
+**v0.3.1**
+
+March 19, 2017
+
+- Throw more useful error when `getItem` fails
+
 **v0.3.0**
 
 October 30, 2016
